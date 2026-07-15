@@ -30,3 +30,9 @@ To build this project, connect the components to your Arduino board as described
    * Connect the longer leg (Anode / positive) of the LED to **Digital Pin 3**. *Note: Pin 3 supports PWM (Pulse Width Modulation), which is crucial for fading the LED brightness smoothly.*
    * Connect the shorter leg (Cathode / negative) of the LED to a **220Ω resistor**.
    * Connect the other end of the resistor to any **GND** pin on the Arduino to complete the circuit and protect the LED from high current.
+  
+   * ## Notes
+
+The original exercise called for using an LDR or potentiometer, but I didn't have either component on hand. Instead, I adapted the same "read an analog input, scale it to an output" logic using the HC-SR04 ultrasonic sensor — brightness increases as distance decreases.
+
+I also added a simple weighted average (`y = y*0.5 + t*0.5`) to smooth out the raw sensor readings before writing them to the LED, since the distance measurements were noisy on their own.
